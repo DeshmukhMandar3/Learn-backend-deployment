@@ -8,6 +8,7 @@ require("dotenv").config();
 
 const app = express();
 
+app.use(cors());
 app.listen(process.env.port, async () => {
   try {
     await connection;
@@ -19,8 +20,6 @@ app.listen(process.env.port, async () => {
 });
 
 app.use(express.json());
-
-app.use(cors());
 
 app.use("/user", userRouter);
 
