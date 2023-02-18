@@ -20,12 +20,16 @@ app.get("/", (req, res) => {
   res.send("Home Page");
 });
 
-app.listen(process.env.port, async () => {
+async function connectUser() {
   try {
     await connection;
     console.log("Server is connected to Database");
   } catch (err) {
     console.log(err);
   }
+}
+
+connectUser();
+app.listen(process.env.port, () => {
   console.log("Server has been started at PORT 8080");
 });
