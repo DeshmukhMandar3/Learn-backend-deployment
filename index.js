@@ -9,15 +9,6 @@ require("dotenv").config();
 const app = express();
 
 app.use(cors());
-app.listen(process.env.port, async () => {
-  try {
-    await connection;
-    console.log("Server is connected to Database");
-  } catch (err) {
-    console.log(err);
-  }
-  console.log("Server has been started at PORT 8080");
-});
 
 app.use(express.json());
 
@@ -27,4 +18,14 @@ app.use("/todo", todoRouter);
 
 app.get("/", (req, res) => {
   res.send("Home Page");
+});
+
+app.listen(process.env.port, async () => {
+  try {
+    await connection;
+    console.log("Server is connected to Database");
+  } catch (err) {
+    console.log(err);
+  }
+  console.log("Server has been started at PORT 8080");
 });
